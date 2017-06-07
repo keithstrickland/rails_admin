@@ -16,7 +16,7 @@ module RailsAdmin
           proc do
             @history = @auditing_adapter && @auditing_adapter.latest || []
             if @action.statistics?
-              @abstract_models = RailsAdmin::Config.visible_models(controller: self).collect(&:abstract_model)
+              @abstract_models = RailsAdmin::Config.visible_models(controller: self).collect(&:abstract_model).uniq
 
               @most_recent_created = {}
               @count = {}

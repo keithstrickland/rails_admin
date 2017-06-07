@@ -104,7 +104,7 @@ module RailsAdmin
           link_to nav_icon + capitalize_first_letter(node.label_plural), url, class: "pjax#{level_class}"
         end
         li + navigation(nodes_stack, nodes_stack.select { |n| n.parent.to_s == node.abstract_model.model_name }, level + 1)
-      end.join.html_safe
+      end.uniq.join.html_safe
     end
 
     def breadcrumb(action = @action, _acc = [])
